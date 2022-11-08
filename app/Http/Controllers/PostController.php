@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -10,16 +11,28 @@ class PostController extends Controller
     {
         return Post::all();
     }
-    public function store(Request $request)
+    public function store(Post $request)
     {
+        $request -> validate([
+            'title' => 'required',
+            'text' => 'required',
+            'author' => 'required',
+            'date' => 'required'
+        ]);
         return Post::create($request->all());
     }
-    public function show(Post $post)
+    public function show(Post $id)
     {
-        return $post;
+        return $id;
     }
     public function update(Post $post, Request $request)
     {
+        $request -> validate([
+            'title' => 'required',
+            'text' => 'required',
+            'author' => 'required',
+            'date' => 'required'
+        ]);
         $post->update($request->all());
         return $post;
     }

@@ -19,12 +19,12 @@ return new class extends Migration
             $table->string("title_request");
             $table->string("text_request");
             $table->unsignedBigInteger('subdivision_id');
-            $table->unsignedBigInteger("category_id");
+            $table->unsignedBigInteger("category_id")->default(0);
             $table->date("date_request");
             $table->timestamps();
 
             $table->foreign("user_id")->references("id")->on('users');
-//            $table->foreign('subdivision_id')->references('id')->on('subdivisions');
+            $table->foreign('subdivision_id')->references('id')->on('subdivisions');
             $table->foreign("category_id")->references("id")->on("categories");
 
         });

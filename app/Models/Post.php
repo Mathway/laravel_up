@@ -5,9 +5,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class news extends Model
+class Post extends Model
 {
     use HasFactory;
-    
-    protected $fillable = ['name', 'content'];
+    protected $table = "news";
+    protected $fillable = ['title', 'text',"author","date"];
 }
